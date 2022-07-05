@@ -16,3 +16,11 @@ VALUES
 ('Boarmon', 'Jun 7, 2005', 7, true, 20.4),
 ('Blossom', 'Oct 13, 1998', 3, true, 17),
 ('Ditto', 'May 14, 2022', 4, true, 22);
+
+
+BEGIN TRANSACTION;
+UPDATE animals
+SET species = 'unspecified';
+SELECT * FROM animals;
+ROLLBACK TRANSACTION;
+SELECT * FROM animals;
