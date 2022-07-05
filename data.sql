@@ -45,3 +45,29 @@ SELECT * FROM animals;
 
 ROLLBACK TRANSACTION;
 SELECT * FROM animals;
+
+
+BEGIN TRANSACTION;
+
+DELETE FROM animals
+WHERE date_of_birth > '2022-01-01';
+
+SELECT * FROM animals;
+
+SAVEPOINT sp1;
+
+UPDATE animals
+SET weight_kg = weight_kg * -1;
+
+SELECT * FROM animals;
+
+ROLLBACK TO sp1;
+
+UPDATE animals
+SET weight_kg = weight_kg * -1
+WHERE weight_kg < 0;
+
+SELECT * FROM animals;
+
+COMMIT TRANSACTION;
+SELECT * FROM animals;
