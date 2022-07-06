@@ -22,3 +22,24 @@ CREATE TABLE species (
     id INT GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255)
 );
+
+ALTER TABLE species
+ADD UNIQUE(id);
+
+ALTER TABLE owners
+ADD UNIQUE(id);
+
+ALTER TABLE animals
+DROP COLUMN species;
+
+ALTER TABLE animals
+ADD species_id INT;
+
+ALTER TABLE animals
+ADD owner_id INT;
+
+ALTER TABLE animals
+ADD CONSTRAINT fk_species_id FOREIGN KEY (species_id) REFERENCES species(id);
+
+ALTER TABLE animals
+ADD CONSTRAINT fk_owner_id FOREIGN KEY (owner_id) REFERENCES owners(id);
