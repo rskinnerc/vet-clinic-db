@@ -19,7 +19,7 @@ SELECT AVG(escape_attempts), species FROM animals WHERE date_of_birth BETWEEN '1
 SELECT name, full_name
 FROM animals
 JOIN owners ON animals.owner_id = owners.id
-WHERE owners.full_name LIKE 'Melody Pond';
+WHERE owners.full_name = 'Melody Pond';
 
 SELECT animals.name
 FROM animals
