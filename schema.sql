@@ -55,3 +55,10 @@ CREATE TABLE vets (
     date_of_graduation DATE
 );
 
+CREATE TABLE specializations (
+    species_id INT,
+    vet_id INT,
+    PRIMARY KEY (species_id, vet_id),
+    CONSTRAINT fk_species FOREIGN KEY (species_id) REFERENCES species(id),
+    CONSTRAINT fk_vet FOREIGN KEY (vet_id) REFERENCES vets(id)
+);
