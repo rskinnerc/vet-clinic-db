@@ -1,5 +1,6 @@
 /* Database schema to keep the structure of entire database. */
 
+/* Project 1 */
 CREATE TABLE animals (
     id INT GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255),
@@ -9,9 +10,11 @@ CREATE TABLE animals (
     weight_kg DECIMAL
 );
 
+/* Project 2 */
 ALTER TABLE animals
 ADD species VARCHAR(255);
 
+/* Project 3 */
 CREATE TABLE owners (
     id INT GENERATED ALWAYS AS IDENTITY,
     full_name VARCHAR(255),
@@ -43,3 +46,30 @@ ADD CONSTRAINT fk_species_id FOREIGN KEY (species_id) REFERENCES species(id);
 
 ALTER TABLE animals
 ADD CONSTRAINT fk_owner_id FOREIGN KEY (owner_id) REFERENCES owners(id);
+
+/* Project 4 */
+CREATE TABLE vets (
+    id INT GENERATED ALWAYS AS IDENTITY UNIQUE,
+    name VARCHAR(255),
+    age INT,
+    date_of_graduation DATE
+);
+
+CREATE TABLE specializations (
+    species_id INT,
+    vet_id INT,
+    PRIMARY KEY (species_id, vet_id),
+    CONSTRAINT fk_species FOREIGN KEY (species_id) REFERENCES species(id),
+    CONSTRAINT fk_vet FOREIGN KEY (vet_id) REFERENCES vets(id)
+);
+
+ALTER TABLE animals
+ADD UNIQUE(id);
+
+CREATE TABLE visits (
+    date DATE,
+    animal_id INT,
+    vet_id INT,
+    CONSTRAINT fk_animal FOREIGN KEY (animal_id) REFERENCES animals(id),
+    CONSTRAINT fk_vet FOREIGN KEY (vet_id) REFERENCES vets(id)
+);
