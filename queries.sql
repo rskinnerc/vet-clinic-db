@@ -111,9 +111,13 @@ WHERE animals.species_id NOT IN (
    WHERE vets.id = visits.vet_id
 );
 
-SELECT count(animals.species_id)
+SELECT count(species.name), species.name
 FROM visits
 JOIN animals ON visits.animal_id = animals.id
+JOIN species ON animals.species_id = species.id
 JOIN vets ON visits.vet_id = vets.id
-WHERE vets.name = 'Maisy Smith';
+WHERE vets.name = 'Maisy Smith'
+GROUP BY species.name
+ORDER BY count(species.name) DESC
+LIMIT 1;
 
