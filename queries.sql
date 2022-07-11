@@ -123,3 +123,5 @@ LIMIT 1;
 
 
 SELECT COUNT(*) FROM visits WHERE animal_id = 4;
+
+SELECT * FROM visits where vet_id = 2;
