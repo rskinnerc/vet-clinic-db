@@ -32,6 +32,8 @@ ADD UNIQUE(id);
 ALTER TABLE owners
 ADD UNIQUE(id);
 
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
 ALTER TABLE animals
 DROP COLUMN species;
 
