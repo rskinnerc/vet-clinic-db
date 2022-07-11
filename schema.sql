@@ -79,3 +79,5 @@ CREATE TABLE visits (
 CREATE INDEX animals_id_index ON visits(animal_id DESC);
 
 CREATE index vet_id_index ON visits (vet_id DESC);
+
+CREATE index owners_email_index ON owners (email);
