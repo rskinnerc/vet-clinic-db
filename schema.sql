@@ -32,6 +32,8 @@ ADD UNIQUE(id);
 ALTER TABLE owners
 ADD UNIQUE(id);
 
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
 ALTER TABLE animals
 DROP COLUMN species;
 
@@ -73,3 +75,9 @@ CREATE TABLE visits (
     CONSTRAINT fk_animal FOREIGN KEY (animal_id) REFERENCES animals(id),
     CONSTRAINT fk_vet FOREIGN KEY (vet_id) REFERENCES vets(id)
 );
+
+CREATE INDEX animals_id_index ON visits(animal_id DESC);
+
+CREATE index vet_id_index ON visits (vet_id DESC);
+
+CREATE index owners_email_index_desc ON owners (email DESC);
