@@ -122,4 +122,4 @@ ORDER BY count(species.name) DESC
 LIMIT 1;
 
 
-SELECT * FROM visits where animal_id = 4;
+SELECT COUNT(*) FROM visits WHERE animal_id = 4;
