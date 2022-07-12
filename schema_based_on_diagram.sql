@@ -31,3 +31,21 @@ CREATE TABLE treatments (
     name VARCHAR(255),
     PRIMARY KEY (id)
 );
+
+create table medical_histories_treatment(
+    treatment_id int,
+    medical_history_id int,
+    CONSTRAINT fk_medical_history FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id),
+    CONSTRAINT fk_treatments FOREIGN KEY (treatment_id) REFERENCES treatments(id)
+);
+
+create table invoice_items(
+    id int PRIMARY key GENERATED ALWAYS AS IDENTITY UNIQUE,
+    unit_price decimal,
+    quantity int,
+    total_price decimal,
+    invoice_id int,
+    treatment_id int,
+    CONSTRAINT fk_treatment FOREIGN KEY (treatment_id) REFERENCES treatments(id),
+    CONSTRAINT fk_invoices FOREIGN KEY (invoice_id) REFERENCES invoices(id)
+);
